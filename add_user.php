@@ -12,10 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $klasa = $_POST["klasa_input"];
     $email = $_POST['email_input'];
     $position = $_POST['position_input'];
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
     $updateSql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, klasa, position)  
-    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$password', '$klasa', '$position')";
+    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position')";
     
     if (mysqli_query($conn, $updateSql)) {
         echo "Użytkownik dodany";

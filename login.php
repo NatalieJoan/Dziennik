@@ -21,7 +21,8 @@
             if ($user) {
                 if (password_verify($password, $user["password"])) {
                     session_start();
-                    $_SESSION["user"] = "yes";
+                    $_SESSION["user"] = $user;
+                    
                     $position = $user["position"];
                     if ($position == "admin") {
                         header("Location: index_admin.php");

@@ -18,31 +18,35 @@ if (!isset($_SESSION["user"])) {
 <div class="container">
     <h1>NAUCZYCIEL</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
-    <a href="index_grades_n.php" class="btn btn-warning">OCENY</a>
+    <a href="index_nauczyciel.php" class="btn btn-warning">UCZNIOWIE</a>
 
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th>Student</th>
+                <th>Grade</th>
+                <th>Date</th>
             </tr>
         </thead>
         <tbody>
             <?php
                 require_once "database.php";
-
-                $sql = "SELECT * FROM users";
+                $loggedInUserId = $_SESSION['user']['id'];
+                $sql = "SELECT * FROM grades where teacher_id = $loggedInUserId";
                 $result = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['student_id'];
+                    $sql2 = "SELECT first_name FROM users WHERE id = $id";
+                    $result2 = mysqli_query($conn, $sql2);
+                    $userRow = mysqli_fetch_assoc($result2);
+
                     echo "<tr>";
-                    echo "<td>" . $row['first_name'] . "</td>";
-                    echo "<td>" . $row['last_name'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td>" . $userRow['first_name'] . "</td>";
+                    echo "<td>" . $row['grade'] . "</td>";
+                    echo "<td>" . $row['date'] . "</td>";
                     echo "</tr>";
                 }
-
                 // Close the database connection
                 mysqli_close($conn);
             ?>
