@@ -16,8 +16,9 @@ if (!isset($_SESSION["user"])) {
 </head>
 <body>
 <div class="container">
-    <h1>ADMIN</h1>
+    <h1>UŻYTKOWNICY - ADMIN</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
+    <a href="index_grades_a.php" class="btn btn-warning">OCENY</a>
 
     <table>
         <thead>
@@ -32,7 +33,7 @@ if (!isset($_SESSION["user"])) {
         </thead>
         <tbody>
         <?php
-        require_once "add_user.php";
+        
 
         require_once "database.php";
 
@@ -79,6 +80,7 @@ if (!isset($_SESSION["user"])) {
                 </td>";
             echo "</tr>";
         }
+        require_once "add_user.php";
         mysqli_close($conn);
         ?>
 
