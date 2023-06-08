@@ -16,7 +16,7 @@ if (!isset($_SESSION["user"])) {
 </head>
 <body>
 <div class="container">
-    <h1>NAUCZYCIEL</h1>
+    <h1>OCENY - NAUCZYCIEL</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <a href="index_nauczyciel.php" class="btn btn-warning">UCZNIOWIE</a>
 
@@ -30,6 +30,8 @@ if (!isset($_SESSION["user"])) {
         </thead>
         <tbody>
             <?php
+
+                
                 require_once "database.php";
                 $loggedInUserId = $_SESSION['user']['id'];
                 $sql = "SELECT * FROM grades where teacher_id = $loggedInUserId";
@@ -47,11 +49,16 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['date'] . "</td>";
                     echo "</tr>";
                 }
-                // Close the database connection
+                
+                require_once "add_grade.php";
                 mysqli_close($conn);
+                
+               
             ?>
         </tbody>
+    
     </table>
+    
 </div>
 
 </body>

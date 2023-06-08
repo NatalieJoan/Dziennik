@@ -32,7 +32,7 @@ if (!isset($_SESSION["user"])) {
             <?php
                 require_once "database.php";
 
-                $sql = "SELECT * FROM users";
+                $sql = "SELECT * FROM users WHERE position = 'uczen'";
                 $result = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_assoc($result)) {
