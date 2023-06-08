@@ -22,7 +22,16 @@
                 if (password_verify($password, $user["password"])) {
                     session_start();
                     $_SESSION["user"] = "yes";
-                    header("Location: index.php");
+                    $position = $user["position"];
+                    if ($position == "admin") {
+                        header("Location: index_admin.php");
+                    } elseif ($position == "nauczyciel") {
+                        header("Location: index_nauczyciel.php");
+                    } elseif ($position == "uczen") {
+                        header("Location: index.php");
+                    } else {
+                        header("Location: index.php");
+                    }
                     die();
                 }
                 else {

@@ -1,12 +1,39 @@
-body{
+body {
     padding: 50px;
 }
-.container{
+
+.container {
     max-width: 600px;
-    margin:0 auto;
-    padding:50px;
+    margin: 0 auto;
+    padding: 50px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.form-group{
-    margin-bottom:20px;
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Added CSS to increase space between table columns */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Added CSS to increase space between table columns */
+td:not(:last-child) {
+    padding-right: 20px;
 }
