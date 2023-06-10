@@ -90,6 +90,10 @@ if (!isset($_SESSION["user"])) {
                 const editForm = document.getElementById('edit-form-' + rowId);
                 editForm.style.display = 'block';
             }
+            function showEditGradeForm(rowId) {
+                const editGradeForm = document.getElementById('edit-grade-form-' + rowId);
+                editGradeForm.style.display = 'block';
+            }
         </script>
 
 

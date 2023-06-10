@@ -19,7 +19,6 @@ if (!isset($_SESSION["user"])) {
     <h1>OCENY - UCZEŃ</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <a href="index.php" class="btn btn-warning">NAUCZYCIELE</a>
-
     <table>
         <thead>
             <tr>
@@ -53,6 +52,5 @@ if (!isset($_SESSION["user"])) {
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
