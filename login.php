@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Dziennik - Logowanie</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -36,26 +36,26 @@
                     die();
                 }
                 else {
-                    echo "<div class='alert alert-danger'>Password does not match</div>";
+                    echo "<div class='alert alert-danger'>Nie zgadza się hasło</div>";
                 }
             }
             else {
-                echo "<div class='alert alert-danger'>Email does not match</div>";
+                echo "<div class='alert alert-danger'>Nie zgadza się e-mail</div>";
             }
         }
     ?>
     <form action="login.php" method="post">
         <div class="form-group">
-            <input type="email" placeholder="Enter Email" name="email" class="form-control">
+            <input type="email" placeholder="Wprowadź e-mail" name="email" class="form-control">
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Enter Password" name="password" class="form-control">
+            <input type="password" placeholder="Wprowadź hasło" name="password" class="form-control">
         </div>
         <div class="form-btn">
-            <input type="submit" value="Login" name="login" class="btn btn-primary">
+            <input type="submit" value="Zaloguj się" name="login" class="btn btn-primary">
         </div>
       </form>
-      <div><p>Not registered yet <a href="registration.php">Register here</a></p></div>
+      <div><p>Nie mam jeszcze konta <a href="registration.php">Zarejestruj się tutaj</a></p></div>
     </div>
 </body>
 </html>

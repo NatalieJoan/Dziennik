@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (mysqli_query($conn, $updateSql)) {
         header("Refresh:0");
-        echo "ocena dodana";
+        echo "Ocena dodana";
         
     } else {
         echo "Błąd podczas dodawania: " . mysqli_error($conn);
@@ -43,14 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Pobieramy wszystkie rekordy z tabeli users
         $sql = "SELECT * FROM grades";
         $result = mysqli_query($conn, $sql);
-
-        
         ?>
     </thead>
     <tbody>
         <tr>
             <td>
-                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj</button>
+                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj ocenę</button>
                 <form method='POST' action='' id='edit-form-0' style='display: none;'>
                     <input type='hidden' name='id' value='0'>
                     <input type='text' name='first_name_input' placeholder='Imię'>

@@ -12,11 +12,11 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>User Dashboard</title>
+    <title>Dziennik</title>
 </head>
 <body>
 <div class="container">
-    <h1>user page</h1>
+    <h1>UŻYTKOWNIK</h1>
     <?php
     if (isset($_GET['id'])) {
         $userId = $_GET['id'];
@@ -24,10 +24,7 @@ if (!isset($_SESSION["user"])) {
     } else {
         echo "No user ID provided.";
     }
-
     ?>
-    
 </div>
-
 </body>
 </html>

@@ -17,15 +17,15 @@ if (!isset($_SESSION["user"])) {
 <body>
 <div class="container">
     <h1>OCENY - UCZEŃ</h1>
-    <a href="logout.php" class="btn btn-warning">Logout</a>
-    <a href="index_history_u&n.php" class="btn btn-warning">historia</a>
-    <a href="index.php" class="btn btn-warning">NAUCZYCIELE</a>
+    <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
+    <a href="index_history_u&n.php" class="btn btn-warning">Historia</a>
+    <a href="index.php" class="btn btn-warning">Nauczyciele</a>
     <table>
         <thead>
             <tr>
-                <th>Student</th>
-                <th>Grade</th>
-                <th>Date</th>
+                <th>Uczeń</th>
+                <th>Ocena</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>

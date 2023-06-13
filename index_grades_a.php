@@ -12,25 +12,23 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>User Dashboard</title>
+    <title>Dziennik</title>
 </head>
 <body>
 <div class="container">
     <h1 class="h1">OCENY - ADMIN</h1>
-    <a href="logout.php" class="btn btn-warning">Logout</a>
-    <a href="index_admin.php" class="btn btn-warning">uzytkownicy</a>
-    <a href="index_grades_EDIT.php" class="btn btn-warning">edytuj</a>
-    <a href="index_history.php" class="btn btn-warning">history</a>
-
-
+    <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
+    <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
+    <a href="index_grades_EDIT.php" class="btn btn-warning">Edytuj ocenę</a>
+    <a href="index_history.php" class="btn btn-warning">Historia</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Student</th>
-                <th>Teacher</th>
-                <th>Grade</th>
-                <th>Date</th>
+                <th>Uczeń</th>
+                <th>Nauczyciel</th>
+                <th>Oceny</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>

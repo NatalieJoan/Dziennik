@@ -12,20 +12,19 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>User Dashboard</title>
+    <title>Dziennik</title>
 </head>
 <body>
 <div class="container">
     <h1>NAUCZYCIEL</h1>
-    <a href="logout.php" class="btn btn-warning">Logout</a>
-    <a href="index_grades_n.php" class="btn btn-warning">OCENY</a>
-
+    <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
+    <a href="index_grades_n.php" class="btn btn-warning">Oceny</a>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>E-mail</th>
             </tr>
         </thead>
         <tbody>
@@ -42,13 +41,11 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['email'] . "</td>";
                     echo "</tr>";
                 }
-
                 // Close the database connection
                 mysqli_close($conn);
             ?>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

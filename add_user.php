@@ -47,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         <tr>
             <td>
-                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj</button>
+                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj użytkownika</button>
                 <form method='POST' action='' id='edit-form-0' style='display: none;'>
                     <input type='hidden' name='id' value='0'>
                     <!-- Input fields for adding a new user -->
                     <input type='text' name='first_name_input' placeholder='Imię'>
                     <input type='text' name='last_name_input' placeholder='Nazwisko'>
-                    <input type='text' name='email_input' placeholder='Email'>
+                    <input type='text' name='email_input' placeholder='E-mail'>
                     <input type='text' name='birthday_input' placeholder='Data urodzenia'>
                     <input type='text' name='address_input' placeholder='Adres'>
                     <input type='text' name='password_input' placeholder='Hasło'>

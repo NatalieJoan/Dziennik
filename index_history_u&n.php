@@ -12,7 +12,7 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>User Dashboard</title>
+    <title>Dziennik</title>
 </head>
 <body>
 <div class="container">
@@ -24,25 +24,23 @@ if (!isset($_SESSION["user"])) {
         <h1 class="h1">HISTORIA - nauczyciel</h1>
     <?php endif; ?>
 
-    <a href="logout.php" class="btn btn-warning">Logout</a>
+    <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
 
     <?php if ($_SESSION['user']['position'] == 'uczen'): ?>
-        <a href="index_grades_u.php" class="btn btn-warning">OCENY</a>
+        <a href="index_grades_u.php" class="btn btn-warning">Oceny</a>
     <?php endif; ?>
     
     <?php if ($_SESSION['user']['position'] == 'nauczyciel'): ?>
-        <a href="index_grades_n.php" class="btn btn-warning">OCENY</a>
+        <a href="index_grades_n.php" class="btn btn-warning">Oceny</a>
     <?php endif; ?>
     <table>
         <thead>
-           
+        
         </thead>
         <tbody>
         <?php
-        
 
         require_once "database.php";
-
         $loggedId = $_SESSION['user']['id'];
         // Pobieramy wszystkie rekordy z tabeli users
         $sql = "SELECT * FROM change_history WHERE ";
@@ -55,7 +53,6 @@ if (!isset($_SESSION["user"])) {
         {
             $sql .= "record_id IN (SELECT id FROM grades WHERE student_id = $loggedId)";
         }
-
 
         $result = mysqli_query($conn, $sql);
 
@@ -77,7 +74,6 @@ if (!isset($_SESSION["user"])) {
                 {
                     echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " zmieniono ocene - " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
                 }
-                
             }
         }
         if($_SESSION['user']['position'] == 'uczen')
@@ -97,8 +93,7 @@ if (!isset($_SESSION["user"])) {
                 else
                 {
                     echo "<tr><td>" . $nauczyciel['last_name'] . " zmienił/a Twoją ocenę z " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
-                }
-                
+                }   
             }
         }
         mysqli_close($conn);
@@ -106,6 +101,5 @@ if (!isset($_SESSION["user"])) {
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

@@ -17,23 +17,20 @@ if (!isset($_SESSION["user"])) {
 <body>
 <div class="container">
     <h1>OCENY - NAUCZYCIEL</h1>
-    <a href="logout.php" class="btn btn-warning">Logout</a>
-    <a href="index_grades_EDIT.php" class="btn btn-warning">edit</a>
-    <a href="index_nauczyciel.php" class="btn btn-warning">UCZNIOWIE</a>
-    <a href="index_history_u&n.php" class="btn btn-warning">history</a>
-    
+    <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
+    <a href="index_grades_EDIT.php" class="btn btn-warning">Edycja</a>
+    <a href="index_nauczyciel.php" class="btn btn-warning">Uczniowie</a>
+    <a href="index_history_u&n.php" class="btn btn-warning">Historia</a>
     <table>
         <thead>
             <tr>
-                <th>Student</th>
-                <th>Grade</th>
-                <th>Date</th>
+                <th>Uczeń</th>
+                <th>Ocena</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
             <?php
-
-                
                 require_once "database.php";
                 $loggedInUserId = $_SESSION['user']['id'];
                 
@@ -52,17 +49,11 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['date'] . "</td>";
                     echo "</tr>";
                 }
-                
                 require_once "add_grade.php";
                 mysqli_close($conn);
-                
-               
             ?>
         </tbody>
-    
     </table>
-    
 </div>
-
 </body>
 </html>
