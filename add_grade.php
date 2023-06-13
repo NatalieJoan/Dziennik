@@ -9,17 +9,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $grade = $_POST['grade_input'];
     $loggedInUserId = $_SESSION['user']['id'];
 
+    $query = "SELECT MAX(id) + 1 AS next_id FROM grades";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $nextId = $row['next_id'];
+
     $sql2 = "SELECT id FROM users where first_name = '$first_name' and last_name = '$last_name'";
     $result2 = mysqli_query($conn, $sql2);
     $row = mysqli_fetch_assoc($result2);
     $studentId = $row['id'];
 
+    $add_history = "INSERT INTO change_history (user_id, action, table_name, record_id, old_value, new_value)
+    VALUES ($loggedInUserId, 'add', 'grades', $nextId, null, $grade)";
+    mysqli_query($conn, $add_history);
     // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
     $updateSql = "INSERT INTO grades (grade, student_id, teacher_id, date) VALUES ('$grade', '$studentId', '$loggedInUserId', '2002-02-02')";
 
     
     if (mysqli_query($conn, $updateSql)) {
+        header("Refresh:0");
         echo "ocena dodana";
+        
     } else {
         echo "Błąd podczas dodawania: " . mysqli_error($conn);
     }
@@ -34,11 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM grades";
         $result = mysqli_query($conn, $sql);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            // Display user data here
-            echo "</tr>";
-        }
+        
         ?>
     </thead>
     <tbody>

@@ -25,6 +25,12 @@ if (!isset($_SESSION["user"])) {
     
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <?php if ($_SESSION['user']['position'] == 'admin'): ?>
+        <a href="index_grades_a.php" class="btn btn-warning">POWROT</a>
+    <?php endif; ?>
+    <?php if ($_SESSION['user']['position'] == 'nauczyciel'): ?>
+        <a href="index_grades_n.php" class="btn btn-warning">POWROT</a>
+    <?php endif; ?>
+    <?php if ($_SESSION['user']['position'] == 'admin'): ?>
         <a href="index_admin.php" class="btn btn-warning">uzytkownicy</a>
     <?php endif; ?>
     <?php if ($_SESSION['user']['position'] == 'nauczyciel'): ?>

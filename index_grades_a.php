@@ -19,7 +19,7 @@ if (!isset($_SESSION["user"])) {
     <h1 class="h1">OCENY - ADMIN</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <a href="index_admin.php" class="btn btn-warning">uzytkownicy</a>
-    <a href="index_grades_a_EDIT.php" class="btn btn-warning">edytuj</a>
+    <a href="index_grades_EDIT.php" class="btn btn-warning">edytuj</a>
 
 
     <table class="table">

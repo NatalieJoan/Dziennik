@@ -1,13 +1,22 @@
 <?php
 require_once "database.php";
-
+$userpos = $_SESSION['user']['position'];
+$loggedInUserId = $_SESSION['user']['id'];
 // Sprawdzamy, czy żądanie jest typu POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gradeId = $_POST['grade_id'];
+    $oldGrade = " select grade from grades where id = $gradeId";
+    $result = mysqli_query($conn, $oldGrade);
+    $row = mysqli_fetch_assoc($result);
+    $oldGradeValue = $row['grade'];
     $newGrade = $_POST['grade_input'];
+
+    $add_history = "INSERT INTO change_history (user_id, action, table_name, record_id, old_value, new_value)
+    VALUES ($loggedInUserId, 'update', 'grades', $gradeId, $oldGradeValue, $newGrade)";
 
     // Aktualizujemy ocenę w bazie danych na podstawie przesłanych wartości
     $updateSql = "UPDATE grades SET grade='$newGrade' WHERE id=$gradeId";
+    mysqli_query($conn, $add_history);
 
     if (mysqli_query($conn, $updateSql)) {
         echo "Ocena została zaktualizowana";
@@ -16,11 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
-
 $sql = "SELECT * FROM grades";
-$userpos = $_SESSION['user']['position'];
-$loggedInUserId = $_SESSION['user']['id'];
+
 if ($userpos != 'admin')
 {
     $sql = "SELECT * FROM grades where teacher_id = $loggedInUserId";
