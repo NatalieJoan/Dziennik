@@ -38,7 +38,6 @@ if (!isset($_SESSION["user"])) {
         require_once "database.php";
 
 
-        // Pobieramy wszystkie rekordy z tabeli users
         $sql = "SELECT * FROM users";
         $result = mysqli_query($conn, $sql);
 
@@ -66,7 +65,7 @@ if (!isset($_SESSION["user"])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
         <script>
-            
+
             function showEditForm(rowId) {
                 const editForm = document.getElementById('edit-form-' + rowId);
                 editForm.style.display = 'block';
