@@ -49,6 +49,12 @@ if (!isset($_SESSION["user"])) {
             echo "<td>" . $row['email'] . "</td>";
             echo "<td>" . $row['klasa'] . "</td>";
             echo "<td>" . $row['position'] . "</td>";
+            echo "<td>
+            <form method='POST' action='delete_user.php' onsubmit='return confirm(\"Are you sure you want to delete this user?\")'>
+              <input type='hidden' name='userId' value='" . $row['id'] . "'>
+              <button type='submit'>Delete</button>
+            </form>
+          </td>";
             echo "</tr>";
         }
         require_once "add_user.php";
@@ -57,19 +63,21 @@ if (!isset($_SESSION["user"])) {
 
         
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
         <script>
-            // Funkcja do wyświetlania formularza edycji
+            
             function showEditForm(rowId) {
                 const editForm = document.getElementById('edit-form-' + rowId);
                 editForm.style.display = 'block';
             }
+
             function showEditGradeForm(rowId) {
                 const editGradeForm = document.getElementById('edit-grade-form-' + rowId);
                 editGradeForm.style.display = 'block';
             }
-
         </script>
+
 
 
         </tbody>
