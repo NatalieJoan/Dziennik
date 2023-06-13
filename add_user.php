@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (mysqli_query($conn, $updateSql)) {
         echo "Użytkownik dodany";
+        header("Refresh:0");
     } else {
         echo "Błąd podczas dodawania: " . mysqli_error($conn);
     }

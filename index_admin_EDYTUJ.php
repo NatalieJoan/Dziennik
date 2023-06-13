@@ -19,7 +19,8 @@ if (!isset($_SESSION["user"])) {
     <h1>UŻYTKOWNICY - ADMIN</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <a href="index_grades_a.php" class="btn btn-warning">OCENY</a>
-    <a href="index_admin_EDYTUJ.php" class="btn btn-warning">EDytuj</a>
+    <a href="index_admin.php" class="btn btn-warning">Powrot</a>
+
     <table>
         <thead>
             <tr>
@@ -37,6 +38,23 @@ if (!isset($_SESSION["user"])) {
 
         require_once "database.php";
 
+        // Sprawdzamy, czy żądanie jest typu POST
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $id = $_POST['id'];
+            $first_name = $_POST['first_name_input'];
+            $last_name = $_POST['last_name_input'];
+            $klasa = $_POST["klasa_input"];
+            $email = $_POST['email_input'];
+            $position = $_POST['position_input'];
+
+            // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
+            $updateSql = "UPDATE users SET first_name='$first_name', last_name='$last_name', email='$email', `klasa` = '$klasa', `position`='$position' WHERE id=$id";
+            if (mysqli_query($conn, $updateSql)) {
+                echo "Rekord został pomyślnie zaktualizowany";
+            } else {
+                echo "Błąd podczas aktualizacji rekordu: " . mysqli_error($conn);
+            }
+        }
 
         // Pobieramy wszystkie rekordy z tabeli users
         $sql = "SELECT * FROM users";
@@ -49,9 +67,20 @@ if (!isset($_SESSION["user"])) {
             echo "<td>" . $row['email'] . "</td>";
             echo "<td>" . $row['klasa'] . "</td>";
             echo "<td>" . $row['position'] . "</td>";
+            echo "<td>
+                    <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
+                    <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none;'>
+                        <input type='hidden' name='id' value='" . $row['id'] . "'>
+                        <input type='text' name='first_name_input' value='" . $row['first_name'] . "'>
+                        <input type='text' name='last_name_input' value='" . $row['last_name'] . "'>
+                        <input type='text' name='email_input' value='" . $row['email'] . "'>
+                        <input type='text' name='klasa_input' value='" . $row['klasa'] . "'>
+                        <input type='text' name='position_input' value='" . $row['position'] . "'>
+                        <button type='submit'>Zapisz</button>
+                    </form>
+                </td>";
             echo "</tr>";
         }
-        require_once "add_user.php";
         mysqli_close($conn);
         ?>
 
