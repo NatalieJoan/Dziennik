@@ -18,6 +18,7 @@ if (!isset($_SESSION["user"])) {
 <div class="container">
     <h1>OCENY - UCZEŃ</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
+    <a href="index_history_u&n.php" class="btn btn-warning">historia</a>
     <a href="index.php" class="btn btn-warning">NAUCZYCIELE</a>
     <table>
         <thead>

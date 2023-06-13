@@ -20,6 +20,7 @@ if (!isset($_SESSION["user"])) {
     <a href="logout.php" class="btn btn-warning">Logout</a>
     <a href="index_grades_EDIT.php" class="btn btn-warning">edit</a>
     <a href="index_nauczyciel.php" class="btn btn-warning">UCZNIOWIE</a>
+    <a href="index_history_u&n.php" class="btn btn-warning">history</a>
     
     <table>
         <thead>
