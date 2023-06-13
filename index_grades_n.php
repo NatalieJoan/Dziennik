@@ -18,8 +18,9 @@ if (!isset($_SESSION["user"])) {
 <div class="container">
     <h1>OCENY - NAUCZYCIEL</h1>
     <a href="logout.php" class="btn btn-warning">Logout</a>
+    <a href="index_grades_a_EDIT.php" class="btn btn-warning">edit</a>
     <a href="index_nauczyciel.php" class="btn btn-warning">UCZNIOWIE</a>
-
+    
     <table>
         <thead>
             <tr>
@@ -34,6 +35,7 @@ if (!isset($_SESSION["user"])) {
                 
                 require_once "database.php";
                 $loggedInUserId = $_SESSION['user']['id'];
+                
                 $sql = "SELECT * FROM grades where teacher_id = $loggedInUserId";
                 $result = mysqli_query($conn, $sql);
 

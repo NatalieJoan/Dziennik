@@ -83,10 +83,7 @@ if (!isset($_SESSION["user"])) {
         }
         mysqli_close($conn);
         ?>
-
         
-
-
         <script>
             // Funkcja do wyświetlania formularza edycji
             function showEditForm(rowId) {
