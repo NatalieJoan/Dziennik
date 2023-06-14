@@ -60,8 +60,8 @@ if (!isset($_SESSION["user"])) {
         {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>Made change -" . $row['action'] . "- at " . $row['timestamp'] . ".";
-                echo "</td>";
+                echo "<td><b>Made change -" . $row['action'] . "- at " . $row['timestamp'] . ".";
+                echo "</b></td>";
                 echo "</tr>";
                 $sql_uczen = "SELECT * from users where id = (select student_id from grades where id = {$row['record_id']})";
                 $result2 = mysqli_query($conn, $sql_uczen);
@@ -80,8 +80,8 @@ if (!isset($_SESSION["user"])) {
         {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>Made change -" . $row['action'] . "- at " . $row['timestamp'] . ".";
-                echo "</td>";
+                echo "<td><b>Change -" . $row['action'] . "- at " . $row['timestamp'] . ".";
+                echo "</b></td>";
                 echo "</tr>";
                 $sql_nauczyciel = "SELECT * from users where id = (select teacher_id from grades where id = {$row['record_id']})";
                 $result2 = mysqli_query($conn, $sql_nauczyciel);
