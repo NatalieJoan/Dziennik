@@ -23,6 +23,7 @@ if (!isset($_SESSION["user"])) {
     <table>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>E-mail</th>
@@ -40,6 +41,7 @@ if (!isset($_SESSION["user"])) {
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
+            echo "<td><a href='users.php?id=" . $row['id'] . "'>" . $row['id'] . "</a></td>";
             echo "<td>" . $row['first_name'] . "</td>";
             echo "<td>" . $row['last_name'] . "</td>";
             echo "<td>" . $row['email'] . "</td>";
