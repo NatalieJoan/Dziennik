@@ -50,7 +50,7 @@
         }
     ?>
     <form action="login.php" method="post">
-        <h1>Logowanie</h1>
+        <h1 style="font-size: 34px">LOGOWANIE</h1>
         <div class="form-group">
             <input type="email" placeholder="Wprowadź e-mail" name="email" class="form-control">
         </div>

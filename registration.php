@@ -104,7 +104,7 @@
         }
         ?>
         <form action="registration.php" method="post">
-            <h1>Registration</h1>
+            <h1 style="font-size: 34px">REJESTRACJA</h1>
             <div class="form-group">
                 <input type="text" class="form-control" name="firstName" placeholder="Imię">
             </div>
