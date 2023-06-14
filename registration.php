@@ -17,7 +17,7 @@
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\SMTP;
         use PHPMailer\PHPMailer\Exception;
-
+        require "mail.php";
         if (isset($_POST["submit"])) {
             $firstName = $_POST["firstName"];
             $lastName = $_POST["lastName"];
@@ -87,11 +87,14 @@
                 }
             } else {
                 
-                $sql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, veryfication_code, is_verified) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, verification_code, is_verified) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
-                if ($prepareStmt) {
-                    mysqli_stmt_bind_param($stmt, "ssssssii", $firstName, $lastName, $email, $birthday, $address, $passwordHash, $v_code, $is_verified);
+                $subject = "ss";
+                $verificationCode = str_pad(rand(1000, 9999), 4, '0', STR_PAD_LEFT);
+                $mailSent = send_mail($email, $subject, $verificationCode );
+                if ($mailSent) {
+                    mysqli_stmt_bind_param($stmt, "ssssssii", $firstName, $lastName, $email, $birthday, $address, $passwordHash, $verificationCode, $is_verified);
                     mysqli_stmt_execute($stmt);
                     echo "<div class='alert alert-success'>Rejestracja zakończona sukcesem!</div>";
                 } else {

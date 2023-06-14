@@ -24,7 +24,12 @@
                     $_SESSION["user"] = $user;
                     
                     $position = $user["position"];
-                    if ($position == "admin") {
+                    $is_vefurried = $user["is_verified"];
+                    if ($is_vefurried == 0)
+                    {
+                        header("Location: code_vefurrycation.php");
+                    }
+                    else if ($position == "admin") {
                         header("Location: index_admin.php");
                     } elseif ($position == "nauczyciel") {
                         header("Location: index_nauczyciel.php");
