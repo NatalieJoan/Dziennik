@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    max-width: 800;
+    max-width: 700;
     margin: 40 auto;
     padding: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -13,7 +13,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Added CSS to increase space between table columns */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -33,7 +32,6 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
-/* Added CSS to increase space between table columns */
 td:not(:last-child) {
     padding-right: 20px;
 }
