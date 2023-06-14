@@ -10,3 +10,4 @@
 - potwierdzanie rejestracji mailem? maybe baybe
 - ~~bugtofix: nie odróżnia czy chcemy edytować czy dodać nowego~~ ZROBIONE
 - ogarnięcie graficzne XD
+- pamiętac żeby włączyć sprawdzanie hasła z powrotem!!!
