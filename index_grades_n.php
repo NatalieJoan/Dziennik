@@ -19,7 +19,7 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
-        <div class="headers">
+        <div class="headers" style="padding-left: 10px;">
             <h1>OCENY - NAUCZYCIEL</h1>
             <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
