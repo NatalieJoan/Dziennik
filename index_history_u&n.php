@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(E_ERROR | E_PARSE);
+
 if (!isset($_SESSION["user"])) {
     header("Location: login.php");
 }
@@ -70,8 +72,16 @@ if (!isset($_SESSION["user"])) {
                 $uczen = mysqli_fetch_assoc($result2);
                 if ( $row['action'] == 'add')
                 {                
-                    echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " nowa ocena - " . $row['new_value'] . "</td></tr>";
-                }
+                    $firstName = $uczen['first_name'];
+                    $lastName = $uczen['last_name'];
+                    $newValue = $row['new_value'];
+            
+                    if ($firstName !== null && $lastName !== null && $newValue !== null) {
+                        echo "<tr><td>" . $firstName . " " . $lastName . " nowa ocena - " . $newValue . "</td></tr>";
+                    }
+                    else {
+                        echo "<tr><td>Ocena usunieta</td></tr>";
+                    }                }
                 else if ( $row['action'] == 'delete')
                 {               
                     $sql_uczen = "SELECT * FROM users WHERE id = " . $row['Student_Id'];
@@ -81,8 +91,14 @@ if (!isset($_SESSION["user"])) {
                 }
                 else
                 {
-                    echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " zmieniono ocene - " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
-                }
+                    echo "<tr><td>";
+                    if ($uczen['first_name'] !== null && $uczen['last_name'] !== null && $row['old_value'] !== null && $row['new_value'] !== null) {
+                        echo $uczen['first_name'] . " " . $uczen['last_name'] . " zmieniono ocenę - " . $row['old_value'] . " na " . $row['new_value'];
+                    }
+                    else {
+                        echo "Ocena usunieta";
+                    }  
+                    echo "</td></tr>";                }
             }
         }
         if($_SESSION['user']['position'] == 'uczen')
@@ -97,8 +113,15 @@ if (!isset($_SESSION["user"])) {
                 $nauczyciel = mysqli_fetch_assoc($result2);
                 if ( $row['action'] == 'add')
                 {                
-                    echo "<tr><td>" . $nauczyciel['last_name'] . " wpisał/a nową ocenę - " . $row['new_value'] . "</td></tr>";
-                }
+                    echo "<tr><td>";
+                    if ($nauczyciel['last_name'] !== null && $row['new_value'] !== null) {
+                        echo $nauczyciel['last_name'] . " wpisał/a nową ocenę - " . $row['new_value'];
+                    }else {
+                        echo "Ocena usunieta";
+                    }  
+
+                    echo "</td></tr>";
+                                    }
                 else if ( $row['action'] == 'delete')
                 {   
                     $sql_nauczyciel = "SELECT * from users where id = {$row['user_id']}";
@@ -108,8 +131,14 @@ if (!isset($_SESSION["user"])) {
                 }
                 else
                 {
-                    echo "<tr><td>" . $nauczyciel['last_name'] . " zmienił/a Twoją ocenę z " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
-                }   
+                    echo "<tr><td>";
+                    if ($nauczyciel['last_name'] !== null && $row['old_value'] !== null && $row['new_value'] !== null) {
+                        echo $nauczyciel['last_name'] . " zmienił/a Twoją ocenę z " . $row['old_value'] . " na " . $row['new_value'];
+                    }else {
+                        echo "Ocena usunieta";
+                    }  
+                    echo "</td></tr>";
+                                    }   
             }
         }
         mysqli_close($conn);
