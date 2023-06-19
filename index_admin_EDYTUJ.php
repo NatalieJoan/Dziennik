@@ -35,6 +35,8 @@ if (!isset($_SESSION["user"])) {
                     <th>Nazwisko</th>
                     <th>E-mail</th>
                     <th>Klasa</th>
+                    <th>Adres</th>
+                    <th>Urodziny</th>
                     <th>Stanowisko</th>
                 </tr>
             </thead>
@@ -49,11 +51,13 @@ if (!isset($_SESSION["user"])) {
                     $first_name = $_POST['first_name_input'];
                     $last_name = $_POST['last_name_input'];
                     $klasa = $_POST["klasa_input"];
+                    $address = $_POST['address_input'];
+                    $birthday = $_POST['birthday_input'];
                     $email = $_POST['email_input'];
                     $position = $_POST['position_input'];
 
                     // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
-                    $updateSql = "UPDATE users SET first_name='$first_name', last_name='$last_name', email='$email', `klasa` = '$klasa', `position`='$position' WHERE id=$id";
+                    $updateSql = "UPDATE users SET first_name='$first_name', last_name='$last_name', email='$email', klasa = '$klasa', position='$position', address = '$address', birthday = '$birthday' WHERE id=$id";
                     if (mysqli_query($conn, $updateSql)) {
                         echo "Rekord został pomyślnie zaktualizowany";
                     } else {
@@ -71,6 +75,8 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['last_name'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";
                     echo "<td>" . $row['klasa'] . "</td>";
+                    echo "<td>" . $row['address'] . "</td>";
+                    echo "<td>" . $row['birthday'] . "</td>";
                     echo "<td>" . $row['position'] . "</td>";
                     echo "<td>
                     <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
@@ -80,6 +86,8 @@ if (!isset($_SESSION["user"])) {
                         <input type='text' name='last_name_input' value='" . $row['last_name'] . "'>
                         <input type='text' name='email_input' value='" . $row['email'] . "'>
                         <input type='text' name='klasa_input' value='" . $row['klasa'] . "'>
+                        <input type='text' name='address_input' value='" . $row['address'] . "'>
+                        <input type='text' name='birthday_input' value='" . $row['birthday'] . "'>
                         <input type='text' name='position_input' value='" . $row['position'] . "'>
                         <button type='submit'>Zapisz</button>
                     </form>

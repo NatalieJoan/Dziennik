@@ -38,6 +38,8 @@ if (!isset($_SESSION["user"])) {
                     <th>Nazwisko</th>
                     <th>E-mail</th>
                     <th>Klasa</th>
+                    <th>Adres</th>
+                    <th>Urodziny</th>
                     <th>Stanowisko</th>
                 </tr>
             </thead>
@@ -56,6 +58,8 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['last_name'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";
                     echo "<td>" . $row['klasa'] . "</td>";
+                    echo "<td>" . $row['address'] . "</td>";
+                    echo "<td>" . $row['birthday'] . "</td>";
                     echo "<td>" . $row['position'] . "</td>";
                     echo "<td>
             <form method='POST' action='delete_user.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tego użytkownika?\")'>

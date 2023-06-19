@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
-    $updateSql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, klasa, position)  
-    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position')";
+    $updateSql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, klasa, position, is_verified)  
+    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position', 1)";
     
     if (mysqli_query($conn, $updateSql)) {
         
