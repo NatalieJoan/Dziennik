@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(243, 243, 243);
   justify-content: center;
 }
 
@@ -9,7 +9,8 @@ body {
   margin: 50 auto;
   padding: 20px;
   box-shadow: rgba(63, 63, 99, 0.297) 1px 7px 20px 2px;
-  background-color: #daebf9;
+  background-color: #b1eaee;
+  font-family: "Verdana";
 }
 
 .form-group {
@@ -24,14 +25,12 @@ table {
 th,
 td {
   padding: 10px;
-}
-
-th {
-  text-align: left;
+  text-align: center;
 }
 
 td {
   border-bottom: 2px solid #35353d23;
+  background-color: rgba(231, 253, 253, 0.747);
 }
 
 td:not(:last-child) {
@@ -54,10 +53,13 @@ td:not(:last-child) {
 
 .headers {
   display: flex;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 15px;
 }
 
+.headers h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .menu{
     padding-left: 10%;
 }
@@ -66,4 +68,11 @@ thead {
   color: aliceblue;
   background: rgb(113,189,38);
   background: linear-gradient(90deg, rgba(113,189,38,1) 0%, rgba(30,190,154,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+input{
+  width: 180px;
+  height: 35px;
+  border-style: none;
+  box-shadow: inset 0 8px 6px -6px rgba(63, 63, 99, 0.297);
 }

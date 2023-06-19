@@ -22,7 +22,7 @@ if (!isset($_SESSION["user"])) {
 
         <div class="headers">
             <h1>UŻYTKOWNICY - ADMIN</h1>
-            <div class="menu">
+            <div class="menu" style="padding-left:28%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
                 <a href="index_admin_EDYTUJ.php" class="btn btn-warning">Edytuj</a>
@@ -37,6 +37,7 @@ if (!isset($_SESSION["user"])) {
                     <th>E-mail</th>
                     <th>Klasa</th>
                     <th>Stanowisko</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -58,7 +59,7 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>
             <form method='POST' action='delete_user.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tego użytkownika?\")'>
               <input type='hidden' name='userId' value='" . $row['id'] . "'>
-              <button type='submit' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white; border-radius: 10%;'>Usuń</button>
+              <button type='submit'>Usuń</button>
             </form>
           </td>";
                     echo "</tr>";

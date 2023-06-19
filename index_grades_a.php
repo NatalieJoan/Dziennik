@@ -19,9 +19,9 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
-        <div class="headers" style="padding-left: 10px;">
+        <div class="headers" style="padding-left: 8px;">
             <h1 class="h1">OCENY - ADMIN</h1>
-            <div class="menu" style="padding-left: 240px;">
+            <div class="menu" style="padding-left: 20%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
                 <a href="index_grades_EDIT.php" class="btn btn-warning">Edytuj ocenę</a>

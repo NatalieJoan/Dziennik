@@ -35,7 +35,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
+<style>
+    .edit-btn {
+    border-style: none; 
+    background-color:rgb(113,189,38); 
+    color:white; 
+    margin: 10px; 
+    width:190px; 
+    height: 50px; 
+    font-weight:bold;
+}
+.edit-btn:hover{
+    border-style: none; 
+    background-color: #4ccf6d; 
+    color:white; 
+    margin: 10px; 
+    width:190px; 
+    height: 50px; 
+    font-weight:bold;
+    transition: 0.2s;
+}
+button[type=submit]{
+    border-style: none; 
+    background-color:rgb(128, 128, 130, 0.6); 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    box-shadow: rgba(63, 63, 99, 0.297) inset 1px 7px 20px 2px;
+}
+button[type=submit]:hover{
+    border-style: none; 
+    background-color:rgb(128, 128, 130, 1); 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    transition: 0.2s;
+    box-shadow: rgba(63, 63, 99, 0.297) inset 1px 7px 20px 2px;
+}
+</style>
 <!-- HTML code for displaying the "Dodaj" button and form -->
 <table>
     <thead>
@@ -47,14 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </thead>
     <tbody>
         <tr>
-            <td style='text-align:center;'>
-                <button class='edit-btn' onclick='showEditForm(0)' style='border-style: none; background-color:rgb(113,189,38); color:white; margin: 20px; width:190px; height: 50px; font-weight:bold;'>DODAJ OCENĘ</button>
+            <td style='text-align:center; background-color:#b1eaee'>
+                <button class='edit-btn' onclick='showEditForm(0)'>DODAJ OCENĘ</button>
                 <form method='POST' action='' id='edit-form-0' style='display: none; margin: 20px;'>
                     <input type='hidden' name='id' value='0'>
                     <input type='text' name='first_name_input' placeholder='Imię'>
                     <input type='text' name='last_name_input' placeholder='Nazwisko'>
                     <input type='text' name='grade_input' placeholder='Ocena'>
-                    <button type='submit' style='border-style: none; background-color:rgb(128, 128, 130, 0.6); color:white;  width:70px; height: 30px; font-weight:bold;'>ZAPISZ</button>
+                    <button type='submit'>ZAPISZ</button>
                 </form>
             </td>
         </tr>
