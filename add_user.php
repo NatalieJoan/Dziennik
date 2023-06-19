@@ -19,8 +19,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position')";
     
     if (mysqli_query($conn, $updateSql)) {
-        echo "Użytkownik dodany";
-        header("Refresh:0");
+        
+        $redirectUrl = '';
+
+        if ($_SESSION['user']['position'] == 'nauczyciel') {
+            $redirectUrl = 'index_nauczyciel.php';
+        } elseif ($_SESSION['user']['position'] == 'admin') {
+            $redirectUrl = 'index_admin.php';
+        }
+
+        if (!empty($redirectUrl)) {
+            echo '<meta http-equiv="refresh" content="0;url=' . $redirectUrl . '">';
+        }
+
+        
     } else {
         echo "Błąd podczas dodawania: " . mysqli_error($conn);
     }

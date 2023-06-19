@@ -21,7 +21,9 @@ if (!isset($_SESSION["user"])) {
     <div class="container">
 
         <div class="headers">
-            <h1>UŻYTKOWNICY - ADMIN</h1>
+            <h1>UŻYTKOWNICY - ADMIN:</h1>
+            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
             <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
@@ -64,6 +66,7 @@ if (!isset($_SESSION["user"])) {
                     echo "</tr>";
                 }
                 require_once "add_user.php";
+
                 mysqli_close($conn);
                 ?>
 

@@ -17,12 +17,14 @@ if (!isset($_SESSION["user"])) {
 <body>
 <div class="container">
     <?php if ($_SESSION['user']['position'] == 'uczen'): ?>
-        <h1 class="h1">HISTORIA - uczeń</h1>
+        <h1 class="h1">HISTORIA - uczeń:</h1>
     <?php endif; ?> 
 
     <?php if ($_SESSION['user']['position'] == 'nauczyciel'): ?>
-        <h1 class="h1">HISTORIA - nauczyciel</h1>
+        <h1 class="h1">HISTORIA - nauczyciel:</h1>
     <?php endif; ?>
+    <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
 
     <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
 
@@ -60,7 +62,7 @@ if (!isset($_SESSION["user"])) {
         {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td><b>Made change -" . $row['action'] . "- at " . $row['timestamp'] . ".";
+                echo "<td><b>Zrobiono zmianę -" . $row['action'] . "- " . $row['timestamp'] . ".";
                 echo "</b></td>";
                 echo "</tr>";
                 $sql_uczen = "SELECT * from users where id = (select student_id from grades where id = {$row['record_id']})";
@@ -68,11 +70,19 @@ if (!isset($_SESSION["user"])) {
                 $uczen = mysqli_fetch_assoc($result2);
                 if ( $row['action'] == 'add')
                 {                
-                    echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " nowa ocena - " . $row['new_value'] . "</td></tr>";
+                    echo "<tr><td><i>" . $uczen['first_name'] . " " . $uczen['last_name'] . "</i> nowa ocena - " . $row['new_value'] . "</td></tr>";
+                }
+                else if ($row['action'] == 'delete')
+                {
+                    $sql5 = "SELECT * FROM users WHERE id = " . $row['Student_Id'];
+                    $result2 = mysqli_query($conn, $sql5);
+                    $uczen = mysqli_fetch_assoc($result2);
+                    echo "<tr><td><i>" . $uczen['first_name'] . " " . $uczen['last_name'] . "</i> usunięto ocenę - " . $row['old_value'] . "</td></tr>";
+
                 }
                 else
                 {
-                    echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " zmieniono ocene - " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
+                    echo "<tr><td><i>" . $uczen['first_name'] . " " . $uczen['last_name'] . "</i> zmieniono ocene - " . $row['old_value'] . " na " . $row['new_value'] . "</td></tr>";
                 }
             }
         }
@@ -89,6 +99,10 @@ if (!isset($_SESSION["user"])) {
                 if ( $row['action'] == 'add')
                 {                
                     echo "<tr><td>" . $nauczyciel['last_name'] . " wpisał/a nową ocenę - " . $row['new_value'] . "</td></tr>";
+                }
+                else if ( $row['action'] == 'delete')
+                {                
+                    echo "<tr><td>" . $nauczyciel['last_name'] . " usunął/ęła ocenę - " . $row['old_value'] . "</td></tr>";
                 }
                 else
                 {

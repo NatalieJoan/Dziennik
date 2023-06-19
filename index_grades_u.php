@@ -20,7 +20,9 @@ if (!isset($_SESSION["user"])) {
 <body>
     <div class="container">
         <div class="headers">
-            <h1>OCENY - UCZEŃ</h1>
+            <h1>OCENY - UCZEŃ:</h1>
+            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
             <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_history_u&n.php" class="btn btn-warning">Historia</a>
@@ -44,12 +46,12 @@ if (!isset($_SESSION["user"])) {
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['teacher_id'];
-                    $sql2 = "SELECT first_name FROM users WHERE id = $id";
+                    $sql2 = "SELECT last_name FROM users WHERE id = $id";
                     $result2 = mysqli_query($conn, $sql2);
                     $userRow = mysqli_fetch_assoc($result2);
 
                     echo "<tr>";
-                    echo "<td>" . $userRow['first_name'] . "</td>";
+                    echo "<td>" . $userRow['last_name'] . "</td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
                     echo "</tr>";

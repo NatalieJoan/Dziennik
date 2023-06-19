@@ -12,19 +12,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   try {
     // Delete user logic here
-    $deleteSql = "DELETE FROM users WHERE id = $userId";
+    $deleteSql = "DELETE FROM grades WHERE grade_id = $userId";
 
     if (mysqli_query($conn, $deleteSql)) {
       // User deleted successfully
       mysqli_close($conn);
-      header("Location: index_admin.php");
+
+      // Check user's position and redirect accordingly
+      if ($_SESSION['user']['position'] == 'nauczyciel') {
+        header("Location: index_grades_n.php");
+      } else if ($_SESSION['user']['position'] == 'admin') {
+        header("Location: index_grades_a.php");
+      } else {
+        // Redirect to a default page if position is neither 'nauczyciel' nor 'admin'
+        header("Location: index.php");
+      }
       exit;
     } else {
-      throw new mysqli_sql_exception("Error deleting user: " . mysqli_error($conn));
+      throw new mysqli_sql_exception("Error deleting grade: " . mysqli_error($conn));
     }
   } catch (mysqli_sql_exception $e) {
-    header("Location: index_admin.php");
-    echo "Cannot delete user, assigned to a grade";
+    // Check user's position and redirect accordingly
+    if ($_SESSION['user']['position'] == 'nauczyciel') {
+      header("Location: index_grades_n.php");
+    } else if ($_SESSION['user']['position'] == 'admin') {
+      header("Location: index_grades_a.php");
+    } else {
+      // Redirect to a default page if position is neither 'nauczyciel' nor 'admin'
+      header("Location: index.php");
+    }
   }
 }
+
 ?>

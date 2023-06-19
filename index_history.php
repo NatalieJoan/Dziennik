@@ -16,7 +16,9 @@ if (!isset($_SESSION["user"])) {
 </head>
 <body>
 <div class="container">
-    <h1>HISTORIA - ADMIN</h1>
+    <h1>HISTORIA - ADMIN:</h1>
+    <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
     <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
     <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
     <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>

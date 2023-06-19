@@ -20,7 +20,9 @@ if (!isset($_SESSION["user"])) {
 <body>
     <div class="container">
         <div class="headers">
-            <h1>NAUCZYCIEL</h1>
+            <h1>NAUCZYCIEL:</h1>
+            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
             <div class="menu" style="padding-left: 50%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_n.php" class="btn btn-warning">Oceny</a>

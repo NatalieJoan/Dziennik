@@ -20,7 +20,9 @@ if (!isset($_SESSION["user"])) {
 <body>
     <div class="container">
         <div class="headers">
-            <h1 class="h1">OCENY - ADMIN</h1>
+            <h1 class="h1">OCENY - ADMIN:</h1>
+            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
             <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
@@ -35,6 +37,7 @@ if (!isset($_SESSION["user"])) {
                     <th>Nauczyciel</th>
                     <th>Oceny</th>
                     <th>Data</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +51,16 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['student_id'] . "</td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
+                    echo "<td>
+                        <form method='POST' action='delete_grade.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tę ocenę?\")'>
+                            <input type='hidden' name='userId' value='" . $row['id'] . "'>
+                            <input type='hidden' name='oldGrade' value='" . $row['grade'] . "'>
+                            <input type='hidden' name='inputId' value='" . $_SESSION['user']['id'] . "'>
+                            <input type='hidden' name='student' value='" . $row['student_id'] . "'>
+                            <input type='hidden' name='position' value='admin'>
+                            <button type='submit' class='btn btn-danger'>Usuń</button>
+                        </form>
+                    </td>";
                     echo "</tr>";
                 }
                 require_once "add_grade.php";

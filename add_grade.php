@@ -1,6 +1,6 @@
 <?php
 require_once "database.php";
-
+error_reporting(E_ERROR | E_PARSE);
 // Sprawdzamy, czy żądanie jest typu POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
@@ -9,7 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $grade = $_POST['grade_input'];
     $loggedInUserId = $_SESSION['user']['id'];
 
-    $query = "SELECT MAX(id) + 1 AS next_id FROM grades";
+    if ($grade < 1 || $grade > 6) {
+        echo "Ocena musi być między 1 a 6";
+        return; // Stop further execution
+    }
+
+    $query = "SELECT MAX(id) AS next_id FROM grades";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     $nextId = $row['next_id'];
@@ -19,20 +24,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_assoc($result2);
     $studentId = $row['id'];
 
-    $add_history = "INSERT INTO change_history (user_id, action, table_name, record_id, old_value, new_value)
-    VALUES ($loggedInUserId, 'add', 'grades', $nextId, null, $grade)";
-    mysqli_query($conn, $add_history);
-    // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
-    $updateSql = "INSERT INTO grades (grade, student_id, teacher_id, date) VALUES ('$grade', '$studentId', '$loggedInUserId', '2002-02-02')";
+   
 
     
-    if (mysqli_query($conn, $updateSql)) {
-        header("Refresh:0");
-        echo "Ocena dodana";
-        
-    } else {
-        echo "Błąd podczas dodawania: " . mysqli_error($conn);
+    try {
+        $updateSql = "INSERT INTO grades (grade, student_id, teacher_id, date) VALUES ('$grade', '$studentId', '$loggedInUserId', CURDATE())";
+    
+        if (mysqli_query($conn, $updateSql)) {
+            $add_history = "INSERT INTO change_history (user_id, action, table_name, record_id, old_value, new_value)
+            VALUES ($loggedInUserId, 'add', 'grades', $nextId, null, $grade)";
+            mysqli_query($conn, $add_history);
+            // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
+            $updateSql = "INSERT INTO grades (grade, student_id, teacher_id, date) VALUES ('$grade', '$studentId', '$loggedInUserId', CURRENT_DATE())";
+            header("Refresh:0");
+            echo "Ocena dodana";
+        } else {
+            echo "Nie można znaleźć ucznia";
+        }
+    } catch (Exception $e) {
+        echo "Nie można znaleźć ucznia";
     }
+    
+    
 }
 ?>
 
