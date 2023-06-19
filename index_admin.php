@@ -70,19 +70,6 @@ if (!isset($_SESSION["user"])) {
                 mysqli_close($conn);
                 ?>
 
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-                <script>
-                    function showEditForm(rowId) {
-                        const editForm = document.getElementById('edit-form-' + rowId);
-                        editForm.style.display = 'block';
-                    }
-                    function showEditGradeForm(rowId) {
-                        const editGradeForm = document.getElementById('edit-grade-form-' + rowId);
-                        editGradeForm.style.display = 'block';
-                    }
-                </script>
-
             </tbody>
         </table>
     </div>

@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <tr>
             <td>
                 <button class='edit-btn' onclick='showEditForm(0)' style='border-style: none; background-color:rgb(113,189,38); color:white; margin: 10px; width:190px; height: 50px; font-weight:bold;'>DODAJ UŻYTKOWNIKA</button>
-                <form method='POST' action='' id='edit-form-0' style='display: block; margin:10px;'>
+                <form method='POST' action='' id='edit-form-0' style='display: none; margin:10px;'>
                     <input type='hidden' name='id' value='0'>
                     <!-- Input fields for adding a new user -->
                     <input type='text' name='first_name_input' placeholder='Imię'>
@@ -77,5 +77,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </tr>
     </tbody>
 </table>
+<script>
+    function showEditForm(formId) {
+        var form = document.getElementById('edit-form-' + formId);
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+</script>
 
 
