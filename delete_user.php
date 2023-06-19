@@ -43,9 +43,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-<<<<<<< HEAD
-?>
-=======
 
 ?>
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868

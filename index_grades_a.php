@@ -19,15 +19,9 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
-<<<<<<< HEAD
-        <div class="headers" style="padding-left: 8px;">
-            <h1 class="h1">OCENY - ADMIN</h1>
-            <div class="menu" style="padding-left: 20%;">
-=======
         <div class="headers">
             <h1 class="h1">OCENY - ADMIN</h1>
             <div class="menu">
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
                 <a href="index_grades_EDIT.php" class="btn btn-warning">Edytuj ocenę</a>

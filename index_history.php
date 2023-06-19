@@ -18,31 +18,6 @@ if (!isset($_SESSION["user"])) {
 </head>
 
 <body>
-<<<<<<< HEAD
-    <div class="container">
-        <div class="headers">
-            <h1>HISTORIA - ADMIN</h1>
-            <div class="menu" style="padding-left: 30%;">
-                <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
-                <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
-                <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
-            </div>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Data wykonania</th>
-                    <th>ID użytkownika</th>
-                    <th>Akcja</th>
-                    <th>ID operacji</th>
-                    <th>Stara wartość</th>
-                    <th>Nowa wartość</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-=======
 <div class="container">
     <h1>HISTORIA - ADMIN</h1>
     <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
@@ -62,7 +37,6 @@ if (!isset($_SESSION["user"])) {
         </thead>
         <tbody>
         <?php
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
 
                 require_once "database.php";
 
