@@ -13,16 +13,14 @@ if (!isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_index.css">
     <title>Dziennik</title>
 </head>
 
 <body>
     <div class="container">
         <div class="headers">
-            <h1>OCENY - NAUCZYCIEL:</h1>
-            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
-
+            <h1>OCENY - NAUCZYCIEL</h1>
             <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_EDIT.php" class="btn btn-warning">Edycja</a>

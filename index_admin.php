@@ -60,7 +60,7 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>
             <form method='POST' action='delete_user.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tego użytkownika?\")'>
               <input type='hidden' name='userId' value='" . $row['id'] . "'>
-              <button type='submit'>Usuń</button>
+              <button type='submit' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white; border-radius: 10%;'>Usuń</button>
             </form>
           </td>";
                     echo "</tr>";

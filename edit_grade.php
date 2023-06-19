@@ -65,11 +65,11 @@ if ($userpos == 'admin')
         echo "<td>" . $row['grade'] . "</td>";
         echo "<td>" . $row['date'] . "</td>";
         echo "<td>
-        <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
+        <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white;'>Edytuj</button>
         <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none;'>
             <input type='hidden' name='grade_id' value='" . $row['id'] . "'>
             <input type='text' name='grade_input' value='" . $row['grade'] . "'>
-            <button type='submit'>Zapisz</button>
+            <button type='submit' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white;'>Zapisz</button>
         </form>
         </td>";
         echo "</tr>";

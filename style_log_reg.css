@@ -5,7 +5,7 @@ body {
 
 .container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 50 auto;
     padding: 10px;
     box-shadow: rgba(63, 63, 99, 0.297) 1px 7px 20px 2px;
     background-color: #B5E2FA;
@@ -31,9 +31,9 @@ form{
     border-color: #06646d;
 }
 h1{
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     font: 'Verdana';
 }
 p{
-    margin-left: 40px;
+    margin-left: 35px;
 }

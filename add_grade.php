@@ -60,14 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </thead>
     <tbody>
         <tr>
-            <td>
-                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj ocenę</button>
-                <form method='POST' action='' id='edit-form-0' style='display: none;'>
+            <td style='text-align:center;'>
+                <button class='edit-btn' onclick='showEditForm(0)' style='border-style: none; background-color:rgb(113,189,38); color:white; margin: 20px; width:190px; height: 50px; font-weight:bold;'>DODAJ OCENĘ</button>
+                <form method='POST' action='' id='edit-form-0' style='display: none; margin: 20px;'>
                     <input type='hidden' name='id' value='0'>
                     <input type='text' name='first_name_input' placeholder='Imię'>
                     <input type='text' name='last_name_input' placeholder='Nazwisko'>
                     <input type='text' name='grade_input' placeholder='Ocena'>
-                    <button type='submit'>Zapisz</button>
+                    <button type='submit' style='border-style: none; background-color:rgb(128, 128, 130, 0.6); color:white;  width:70px; height: 30px; font-weight:bold;'>ZAPISZ</button>
                 </form>
             </td>
         </tr>

@@ -21,7 +21,7 @@ if (!isset($_SESSION["user"])) {
     <div class="container">
         <div class="headers">
             <?php if ($_SESSION['user']['position'] == 'admin'): ?>
-                <h1 class="h1">Edycja Ocen - ADMIN:</h1>
+                <h1 class="h1">Edycja Ocen - ADMIN</h1>
             <?php endif; ?>
             <?php if ($_SESSION['user']['position'] == 'nauczyciel'): ?>
                 <h1 class="h1">Edycja Ocen - nauczyciel:</h1>
@@ -29,7 +29,6 @@ if (!isset($_SESSION["user"])) {
             <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
 
             <div class="menu">
-
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <?php if ($_SESSION['user']['position'] == 'admin'): ?>
                     <a href="index_grades_a.php" class="btn btn-warning">Powrót</a>
