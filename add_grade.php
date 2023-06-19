@@ -35,6 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
             $updateSql = "INSERT INTO grades (grade, student_id, teacher_id, date) VALUES ('$grade', '$studentId', '$loggedInUserId', CURRENT_DATE())";
             header("Refresh:0");
+            if ($_SESSION['user']['position'] == 'nauczyciel') {
+                $redirectUrl = 'index_grades_n.php';
+            } elseif ($_SESSION['user']['position'] == 'admin') {
+                $redirectUrl = 'index_grades_a.php';
+            }
+    
+            if (!empty($redirectUrl)) {
+                echo '<meta http-equiv="refresh" content="0;url=' . $redirectUrl . '">';
+            }
             echo "Ocena dodana";
         } else {
             echo "Nie można znaleźć ucznia";

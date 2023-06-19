@@ -30,7 +30,7 @@ if (!isset($_SESSION["user"])) {
         <table>
             <thead>
                 <tr>
-                    <th>Uczeń</th>
+                    <th>Nauczyciel</th>
                     <th>Ocena</th>
                     <th>Data</th>
                 </tr>
