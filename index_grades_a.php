@@ -31,8 +31,8 @@ if (!isset($_SESSION["user"])) {
         <table class="table">
             <thead>
                 <tr>
-                    <th>Uczeń</th>
-                    <th>Nauczyciel</th>
+                    <th>Nuczyciel</th>
+                    <th>Uczen</th>
                     <th>Oceny</th>
                     <th>Data</th>
                     <th></th>
