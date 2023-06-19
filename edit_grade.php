@@ -1,3 +1,43 @@
+<style>
+.edit-btn{
+    border-style: none; 
+    background-color: turquoise; 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    box-shadow: inset 1px 7px 20px 2px steelblue;
+}
+.edit-btn:hover{
+    border-style: none; 
+    background-color: darkturquoise; 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    transition: 0.2s;
+    box-shadow: rgba(63, 63, 99, 0.8) inset 1px 7px 20px 2px; 
+}
+button[type=submit]{
+    border-style: none; 
+    background-color:rgb(128, 128, 130, 0.6); 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    box-shadow: rgba(63, 63, 99, 0.297) inset 1px 7px 20px 2px;
+}
+button[type=submit]:hover{
+    border-style: none; 
+    background-color:rgb(128, 128, 130, 1); 
+    color:white;  width:100px; 
+    height: 32px; 
+    font-weight:bold; 
+    transition: 0.2s;
+    box-shadow: rgba(63, 63, 99, 0.297) inset 1px 7px 20px 2px;
+}
+input {
+    width: 40px;
+    height: 32px;
+}
+</style>
 <?php
 require_once "database.php";
 $userpos = $_SESSION['user']['position'];
@@ -48,7 +88,7 @@ if ($userpos != 'admin')
         echo "<td>
         <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
         <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none;'>
-            <input type='hidden' name='grade_id' value='" . $row['id'] . "'>
+            <input type='hidden' name='grade_id' value='" . $row['id'] . "' style='display: flex;'>
             <input type='text' name='grade_input' value='" . $row['grade'] . "'>
             <button type='submit'>Zapisz</button>
         </form>
@@ -65,11 +105,11 @@ if ($userpos == 'admin')
         echo "<td>" . $row['grade'] . "</td>";
         echo "<td>" . $row['date'] . "</td>";
         echo "<td>
-        <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white;'>Edytuj</button>
+        <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
         <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none;'>
             <input type='hidden' name='grade_id' value='" . $row['id'] . "'>
             <input type='text' name='grade_input' value='" . $row['grade'] . "'>
-            <button type='submit' style='border-style: none; background-color:rgb(128, 128, 128, 0.6); color:white;'>Zapisz</button>
+            <button type='submit'>Zapisz</button>
         </form>
         </td>";
         echo "</tr>";

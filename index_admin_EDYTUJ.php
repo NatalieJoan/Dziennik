@@ -21,7 +21,7 @@ if (!isset($_SESSION["user"])) {
     <div class="container">
         <div class="headers">
             <h1>UŻYTKOWNICY - ADMIN</h1>
-            <div class="menu">
+            <div class="menu" style="padding-left:30%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
                 <a href="index_admin.php" class="btn btn-warning">Powrót</a>
@@ -35,6 +35,7 @@ if (!isset($_SESSION["user"])) {
                     <th>E-mail</th>
                     <th>Klasa</th>
                     <th>Stanowisko</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,7 +74,7 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['position'] . "</td>";
                     echo "<td>
                     <button class='edit-btn' onclick='showEditForm(" . $row['id'] . ")'>Edytuj</button>
-                    <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none;'>
+                    <form method='POST' action='' id='edit-form-" . $row['id'] . "' style='display: none; width:100px; margin-right:40px;'>
                         <input type='hidden' name='id' value='" . $row['id'] . "'>
                         <input type='text' name='first_name_input' value='" . $row['first_name'] . "'>
                         <input type='text' name='last_name_input' value='" . $row['last_name'] . "'>

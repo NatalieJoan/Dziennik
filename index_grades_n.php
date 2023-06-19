@@ -21,7 +21,7 @@ if (!isset($_SESSION["user"])) {
     <div class="container">
         <div class="headers" style="padding-left: 10px;">
             <h1>OCENY - NAUCZYCIEL</h1>
-            <div class="menu">
+            <div class="menu" style="padding-left: 22%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_EDIT.php" class="btn btn-warning">Edycja</a>
                 <a href="index_nauczyciel.php" class="btn btn-warning">Uczniowie</a>

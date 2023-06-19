@@ -8,11 +8,11 @@ body {
     margin: 50 auto;
     padding: 10px;
     box-shadow: rgba(63, 63, 99, 0.297) 1px 7px 20px 2px;
-    background-color: #B5E2FA;
+    background-color: #b1eaee;
+    font-family: "Verdana";
 }
 
 form{
-    background-color: #B5E2FA;
     padding: 10px;
     margin: 20px;
 }
@@ -22,13 +22,13 @@ form{
 }
 
 .form-btn input{
-    background-color: #0FA3B1;
-    border-color: #0FA3B1;
+    background-color: #0ed4db;
+    border-color: #0ed4db;
 }
 
 .form-btn input:hover{
-    background-color: #06646d;
-    border-color: #06646d;
+    background-color: rgba(30,190,154,1);
+    border-color: rgba(30,190,154,1);
 }
 h1{
     padding-bottom: 30px;
@@ -37,3 +37,6 @@ h1{
 p{
     margin-left: 35px;
 }
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
