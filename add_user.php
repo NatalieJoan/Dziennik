@@ -111,13 +111,8 @@ button[type=submit]:hover{
         ?>
         <tr class="add_user">
             <td>
-<<<<<<< HEAD
-                <button class='edit-btn' onclick='showEditForm(0)'>DODAJ UŻYTKOWNIKA</button>
-                <form method='POST' action='' id='edit-form-0'>
-=======
                 <button class='edit-btn' onclick='showEditForm(0)' style='border-style: none; background-color:rgb(113,189,38); color:white; margin: 10px; width:190px; height: 50px; font-weight:bold;'>DODAJ UŻYTKOWNIKA</button>
                 <form method='POST' action='' id='edit-form-0' style='display: none; margin:10px;'>
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                     <input type='hidden' name='id' value='0'>
                     <!-- Input fields for adding a new user -->
                     <input type='text' name='first_name_input' placeholder='Imię'>

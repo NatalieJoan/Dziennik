@@ -104,24 +104,14 @@ button[type=submit]:hover{
     </thead>
     <tbody>
         <tr>
-<<<<<<< HEAD
             <td style='text-align:center; background-color:#b1eaee'>
                 <button class='edit-btn' onclick='showEditForm(0)'>DODAJ OCENĘ</button>
                 <form method='POST' action='' id='edit-form-0' style='display: none; margin: 20px;'>
-=======
-            <td>
-                <button class='edit-btn' onclick='showEditForm(0)'>Dodaj ocenę</button>
-                <form method='POST' action='' id='edit-form-0' style='display: none;'>
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                     <input type='hidden' name='id' value='0'>
                     <input type='text' name='first_name_input' placeholder='Imię'>
                     <input type='text' name='last_name_input' placeholder='Nazwisko'>
                     <input type='text' name='grade_input' placeholder='Ocena'>
-<<<<<<< HEAD
                     <button type='submit'>ZAPISZ</button>
-=======
-                    <button type='submit'>Zapisz</button>
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                 </form>
             </td>
         </tr>

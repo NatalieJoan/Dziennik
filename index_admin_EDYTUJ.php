@@ -20,14 +20,9 @@ if (!isset($_SESSION["user"])) {
 <body>
     <div class="container">
         <div class="headers">
-<<<<<<< HEAD
-            <h1>UŻYTKOWNICY - ADMIN</h1>
-            <div class="menu" style="padding-left:30%;">
-=======
-            <h1>UŻYTKOWNICY - ADMIN:</h1>
+        <h1 style="margin-right:10%;">ADMIN</h1>
             <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
-            <div class="menu">
->>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
+            <div class="menu" style="padding-left:22%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
                 <a href="index_admin.php" class="btn btn-warning">Powrót</a>

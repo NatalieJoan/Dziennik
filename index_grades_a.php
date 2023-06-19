@@ -46,7 +46,6 @@ if (!isset($_SESSION["user"])) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td><a href='users.php?id=" . $row['teacher_id'] . "'>" . $row['teacher_id'] . "</a></td>";
-                    echo "<td><a href='users.php?id=" . $row['student_id'] . "'>" . $row['student_id'] . "</a></td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
                     echo "<td>
