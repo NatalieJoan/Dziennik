@@ -53,7 +53,7 @@ if (!isset($_SESSION["user"])) {
                 if ($_SESSION['user']['position'] == 'nauczyciel') {
                     $sql .= "user_id = $loggedId";
                 } else {
-                    $sql .= "record_id IN (SELECT id FROM grades WHERE student_id = $loggedId)";
+                    $sql .= "record_id IN (SELECT id FROM grades WHERE student_id = $loggedId) or Student_Id = $loggedId";
                 }
 
                 $result = mysqli_query($conn, $sql);
@@ -71,6 +71,13 @@ if (!isset($_SESSION["user"])) {
                 if ( $row['action'] == 'add')
                 {                
                     echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " nowa ocena - " . $row['new_value'] . "</td></tr>";
+                }
+                else if ( $row['action'] == 'delete')
+                {               
+                    $sql_uczen = "SELECT * FROM users WHERE id = " . $row['Student_Id'];
+                    $result2 = mysqli_query($conn, $sql_uczen);
+                    $uczen = mysqli_fetch_assoc($result2);
+                    echo "<tr><td>" . $uczen['first_name'] . " " . $uczen['last_name'] . " usunięto ocenę - " . $row['old_value'] . "</td></tr>";
                 }
                 else
                 {
@@ -91,6 +98,13 @@ if (!isset($_SESSION["user"])) {
                 if ( $row['action'] == 'add')
                 {                
                     echo "<tr><td>" . $nauczyciel['last_name'] . " wpisał/a nową ocenę - " . $row['new_value'] . "</td></tr>";
+                }
+                else if ( $row['action'] == 'delete')
+                {   
+                    $sql_nauczyciel = "SELECT * from users where id = {$row['user_id']}";
+                    $result2 = mysqli_query($conn, $sql_nauczyciel);
+                    $nauczyciel = mysqli_fetch_assoc($result2);             
+                    echo "<tr><td>" . $nauczyciel['last_name'] . " usunął/ęła ocenę - " . $row['old_value'] . "</td></tr>";
                 }
                 else
                 {
