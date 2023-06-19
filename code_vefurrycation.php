@@ -56,7 +56,7 @@ if (!isset($_SESSION["user"])) {
     <form action="code_vefurrycation.php" method="post">
         <h1>Logowanie</h1>
         <div class="form-group">
-            <input type="text" placeholder="Wprowadź kod wefurrykacyjny:" name="kod" class="form-control">
+            <input type="text" placeholder="Wprowadź kod weryfikacyjny:" name="kod" class="form-control">
         </div>
         <div class="form-btn">
             <input type="submit" value="Zaloguj się" name="login" class="btn btn-primary">

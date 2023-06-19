@@ -19,9 +19,15 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="headers" style="padding-left: 8px;">
             <h1 class="h1">OCENY - ADMIN</h1>
             <div class="menu" style="padding-left: 20%;">
+=======
+        <div class="headers">
+            <h1 class="h1">OCENY - ADMIN</h1>
+            <div class="menu">
+>>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_admin.php" class="btn btn-warning">Użytkownicy</a>
                 <a href="index_grades_EDIT.php" class="btn btn-warning">Edytuj ocenę</a>
@@ -31,10 +37,11 @@ if (!isset($_SESSION["user"])) {
         <table class="table">
             <thead>
                 <tr>
-                    <th>Uczeń</th>
-                    <th>Nauczyciel</th>
+                    <th>Nuczyciel</th>
+                    <th>Uczen</th>
                     <th>Oceny</th>
                     <th>Data</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,10 +51,20 @@ if (!isset($_SESSION["user"])) {
                 $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td>" . $row['teacher_id'] . "</td>";
-                    echo "<td>" . $row['student_id'] . "</td>";
+                    echo "<td><a href='users.php?id=" . $row['teacher_id'] . "'>" . $row['teacher_id'] . "</a></td>";
+                    echo "<td><a href='users.php?id=" . $row['student_id'] . "'>" . $row['student_id'] . "</a></td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
+                    echo "<td>
+                        <form method='POST' action='delete_grade.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tę ocenę?\")'>
+                            <input type='hidden' name='userId' value='" . $row['id'] . "'>
+                            <input type='hidden' name='oldGrade' value='" . $row['grade'] . "'>
+                            <input type='hidden' name='inputId' value='" . $_SESSION['user']['id'] . "'>
+                            <input type='hidden' name='student' value='" . $row['student_id'] . "'>
+                            <input type='hidden' name='position' value='admin'>
+                            <button type='submit' class='btn btn-danger'>Usuń</button>
+                        </form>
+                    </td>";
                     echo "</tr>";
                 }
                 require_once "add_grade.php";

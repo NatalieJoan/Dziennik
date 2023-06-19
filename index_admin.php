@@ -21,8 +21,15 @@ if (!isset($_SESSION["user"])) {
     <div class="container">
 
         <div class="headers">
+<<<<<<< HEAD
             <h1>UŻYTKOWNICY - ADMIN</h1>
             <div class="menu" style="padding-left:28%;">
+=======
+            <h1>UŻYTKOWNICY - ADMIN:</h1>
+            <?php echo "<h2> " . $_SESSION['user']['first_name'] . " ". $_SESSION['user']['last_name'] . "</h2>"; ?>
+
+            <div class="menu">
+>>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_grades_a.php" class="btn btn-warning">Oceny</a>
                 <a href="index_admin_EDYTUJ.php" class="btn btn-warning">Edytuj</a>
@@ -36,6 +43,8 @@ if (!isset($_SESSION["user"])) {
                     <th>Nazwisko</th>
                     <th>E-mail</th>
                     <th>Klasa</th>
+                    <th>Adres</th>
+                    <th>Urodziny</th>
                     <th>Stanowisko</th>
                     <th></th>
                 </tr>
@@ -55,6 +64,8 @@ if (!isset($_SESSION["user"])) {
                     echo "<td>" . $row['last_name'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";
                     echo "<td>" . $row['klasa'] . "</td>";
+                    echo "<td>" . $row['address'] . "</td>";
+                    echo "<td>" . $row['birthday'] . "</td>";
                     echo "<td>" . $row['position'] . "</td>";
                     echo "<td>
             <form method='POST' action='delete_user.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tego użytkownika?\")'>
@@ -65,21 +76,9 @@ if (!isset($_SESSION["user"])) {
                     echo "</tr>";
                 }
                 require_once "add_user.php";
+
                 mysqli_close($conn);
                 ?>
-
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-                <script>
-                    function showEditForm(rowId) {
-                        const editForm = document.getElementById('edit-form-' + rowId);
-                        editForm.style.display = 'block';
-                    }
-                    function showEditGradeForm(rowId) {
-                        const editGradeForm = document.getElementById('edit-grade-form-' + rowId);
-                        editGradeForm.style.display = 'block';
-                    }
-                </script>
 
             </tbody>
         </table>

@@ -15,12 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     // Aktualizujemy rekord w bazie danych na podstawie przesłanych wartości
-    $updateSql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, klasa, position)  
-    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position')";
+    $updateSql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, klasa, position, is_verified)  
+    VALUES ('$first_name', '$last_name', '$email', '$birthday', '$address', '$passwordHash', '$klasa', '$position', 1)";
     
     if (mysqli_query($conn, $updateSql)) {
-        echo "Użytkownik dodany";
-        header("Refresh:0");
+        
+        $redirectUrl = '';
+
+        if ($_SESSION['user']['position'] == 'nauczyciel') {
+            $redirectUrl = 'index_nauczyciel.php';
+        } elseif ($_SESSION['user']['position'] == 'admin') {
+            $redirectUrl = 'index_admin.php';
+        }
+
+        if (!empty($redirectUrl)) {
+            echo '<meta http-equiv="refresh" content="0;url=' . $redirectUrl . '">';
+        }
+
+        
     } else {
         echo "Błąd podczas dodawania: " . mysqli_error($conn);
     }
@@ -99,8 +111,13 @@ button[type=submit]:hover{
         ?>
         <tr class="add_user">
             <td>
+<<<<<<< HEAD
                 <button class='edit-btn' onclick='showEditForm(0)'>DODAJ UŻYTKOWNIKA</button>
                 <form method='POST' action='' id='edit-form-0'>
+=======
+                <button class='edit-btn' onclick='showEditForm(0)' style='border-style: none; background-color:rgb(113,189,38); color:white; margin: 10px; width:190px; height: 50px; font-weight:bold;'>DODAJ UŻYTKOWNIKA</button>
+                <form method='POST' action='' id='edit-form-0' style='display: none; margin:10px;'>
+>>>>>>> 76183f4cf5a8f4a13bb273a6dc91f4ad5bf93868
                     <input type='hidden' name='id' value='0'>
                     <!-- Input fields for adding a new user -->
                     <input type='text' name='first_name_input' placeholder='Imię'>
@@ -117,5 +134,15 @@ button[type=submit]:hover{
         </tr>
     </tbody>
 </table>
+<script>
+    function showEditForm(formId) {
+        var form = document.getElementById('edit-form-' + formId);
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+</script>
 
 

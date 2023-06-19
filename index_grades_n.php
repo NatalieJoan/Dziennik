@@ -19,7 +19,7 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
-        <div class="headers" style="padding-left: 10px;">
+        <div class="headers">
             <h1>OCENY - NAUCZYCIEL</h1>
             <div class="menu" style="padding-left: 22%;">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
@@ -31,9 +31,11 @@ if (!isset($_SESSION["user"])) {
         <table>
             <thead>
                 <tr>
-                    <th>Uczeń</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>Ocena</th>
                     <th>Data</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,14 +48,25 @@ if (!isset($_SESSION["user"])) {
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['student_id'];
-                    $sql2 = "SELECT first_name FROM users WHERE id = $id";
+                    $sql2 = "SELECT first_name, last_name FROM users WHERE id = $id";
                     $result2 = mysqli_query($conn, $sql2);
                     $userRow = mysqli_fetch_assoc($result2);
 
                     echo "<tr>";
                     echo "<td>" . $userRow['first_name'] . "</td>";
+                    echo "<td>" . $userRow['last_name'] . "</td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
+                    echo "<td>
+                        <form method='POST' action='delete_grade.php' onsubmit='return confirm(\"Jesteś pewny, że chcesz usunąć tę ocenę?\")'>
+                            <input type='hidden' name='userId' value='" . $row['id'] . "'>
+                            <input type='hidden' name='oldGrade' value='" . $row['grade'] . "'>
+                            <input type='hidden' name='inputId' value='" . $_SESSION['user']['id'] . "'>
+                            <input type='hidden' name='student' value='" . $row['student_id'] . "'>
+                            <input type='hidden' name='position' value='nauczyciel'>
+                            <button type='submit' class='btn btn-danger'>Usuń</button>
+                        </form>
+                    </td>";
                     echo "</tr>";
                 }
                 require_once "add_grade.php";

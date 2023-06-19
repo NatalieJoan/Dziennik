@@ -90,11 +90,12 @@
                 $sql = "INSERT INTO users (first_name, last_name, email, birthday, address, password, verification_code, is_verified) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
                 $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
-                $subject = "ss";
-                $verificationCode = str_pad(rand(1000, 9999), 4, '0', STR_PAD_LEFT);
+                $subject = "Weryfikacja maila";
+                $codecode = str_pad(rand(1000, 9999), 4, '0', STR_PAD_LEFT);
+                $verificationCode = "Twój kod weryfikacyjny to: " . $codecode;
                 $mailSent = send_mail($email, $subject, $verificationCode );
                 if ($mailSent) {
-                    mysqli_stmt_bind_param($stmt, "ssssssii", $firstName, $lastName, $email, $birthday, $address, $passwordHash, $verificationCode, $is_verified);
+                    mysqli_stmt_bind_param($stmt, "ssssssii", $firstName, $lastName, $email, $birthday, $address, $passwordHash, $codecode, $is_verified);
                     mysqli_stmt_execute($stmt);
                     echo "<div class='alert alert-success'>Rejestracja zakończona sukcesem!</div>";
                 } else {

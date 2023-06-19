@@ -19,9 +19,9 @@ if (!isset($_SESSION["user"])) {
 
 <body>
     <div class="container">
-        <div class="headers" style="padding-left: 10px;">
+        <div class="headers">
             <h1>OCENY - UCZEŃ</h1>
-            <div class="menu" style="padding-left: 388px;">
+            <div class="menu">
                 <a href="logout.php" class="btn btn-warning">Wyloguj się</a>
                 <a href="index_history_u&n.php" class="btn btn-warning">Historia</a>
                 <a href="index.php" class="btn btn-warning">Nauczyciele</a>
@@ -30,7 +30,7 @@ if (!isset($_SESSION["user"])) {
         <table>
             <thead>
                 <tr>
-                    <th>Uczeń</th>
+                    <th>Nauczyciel</th>
                     <th>Ocena</th>
                     <th>Data</th>
                 </tr>
@@ -44,12 +44,12 @@ if (!isset($_SESSION["user"])) {
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $id = $row['teacher_id'];
-                    $sql2 = "SELECT first_name FROM users WHERE id = $id";
+                    $sql2 = "SELECT last_name FROM users WHERE id = $id";
                     $result2 = mysqli_query($conn, $sql2);
                     $userRow = mysqli_fetch_assoc($result2);
 
                     echo "<tr>";
-                    echo "<td>" . $userRow['first_name'] . "</td>";
+                    echo "<td>" . $userRow['last_name'] . "</td>";
                     echo "<td>" . $row['grade'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
                     echo "</tr>";
